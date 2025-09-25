@@ -1,0 +1,7 @@
+{
+  "name": "Somya_Dwivedi_Assignment1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
