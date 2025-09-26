@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-// inline models
 export interface OntarioAqhiEntry {
   city: string;
   aqhi: number;
@@ -16,20 +15,24 @@ export interface OntarioDatasetRecord {
 @Injectable({ providedIn: 'root' })
 export class AqhiService {
   async getOntarioAqhi(): Promise<{
-    source: string;
-    downloadedAt: string;
+    source?: string;
+    dataSource?: string;
+    downloadedAt?: string;
+    fetchedAt?: string;
     entries: OntarioAqhiEntry[];
   }> {
-    const res = await fetch('assets/data/ontario_aqhi.json');
+    const res = await fetch('assets/data/ontarioAqhiData.json');
     return res.json();
   }
 
   async getOntarioDataset(): Promise<{
-    source: string;
-    downloadedAt: string;
+    source?: string;
+    dataSource?: string;
+    downloadedAt?: string;
+    fetchedAt?: string;
     records: OntarioDatasetRecord[];
   }> {
-    const res = await fetch('assets/data/ontario_dataset.json');
+    const res = await fetch('assets/data/dataset.json');
     return res.json();
   }
 }

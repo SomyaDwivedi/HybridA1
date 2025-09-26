@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   IonHeader,
@@ -11,16 +11,10 @@ import {
   IonLabel,
   IonNote,
 } from '@ionic/angular/standalone';
-import { AqhiService } from '../../services/aqhi.service';
-import { OntarioAqhiComponent } from '../../components/ontario-aqhi/ontario-aqhi.component';
+import { AqhiService, OntarioDatasetRecord } from '../../services/aqhi.service';
+import { OntarioAqhiComponent } from '../../components/ontarioAqhi/ontarioAqhi.component';
 import { MessageService } from '../../services/message.service';
-
-// ⬇️ Inline the interface here (remove any models import)
-interface OntarioDatasetRecord {
-  city: string;
-  temperatureC: number;
-  aqhi: number;
-}
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-ontario',
@@ -29,6 +23,7 @@ interface OntarioDatasetRecord {
   styleUrls: ['./ontario.page.scss'],
   imports: [
     CommonModule,
+    RouterLink,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -40,7 +35,7 @@ interface OntarioDatasetRecord {
     OntarioAqhiComponent,
   ],
 })
-export class OntarioPage implements OnInit {
+export class OntarioPage implements OnInit, ViewWillEnter {
   datasetNote = '';
   datasetTime = '';
   records: OntarioDatasetRecord[] = [];
@@ -54,10 +49,14 @@ export class OntarioPage implements OnInit {
 
   async ngOnInit() {
     const ds = await this.aqhi.getOntarioDataset();
-    this.datasetNote = ds.source;
-    this.datasetTime = ds.downloadedAt;
+    this.datasetNote = (ds.dataSource ?? ds.source) || '';
+    this.datasetTime = (ds.fetchedAt ?? ds.downloadedAt) || '';
     this.records = ds.records;
+  }
+
+  ionViewWillEnter() {
     this.incomingMessage = this.msg.getMessage();
+    this.msg.clear();
   }
 
   openDetails(rec: OntarioDatasetRecord) {

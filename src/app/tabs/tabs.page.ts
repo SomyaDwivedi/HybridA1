@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // ⬅️ correct import
+import { RouterLink } from '@angular/router';
 import {
   IonTabs,
   IonTabBar,
@@ -12,13 +12,6 @@ import {
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   standalone: true,
-  imports: [
-    IonTabs,
-    IonTabBar,
-    IonTabButton,
-    IonIcon,
-    IonLabel,
-    RouterLink, 
-  ],
+  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, RouterLink],
 })
 export class TabsPage {}

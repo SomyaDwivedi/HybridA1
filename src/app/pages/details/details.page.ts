@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonButtons,
+  IonBackButton,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonButton,
 } from '@ionic/angular/standalone';
-import { OntarioAqhiComponent } from '../../components/ontario-aqhi/ontario-aqhi.component';
 import { CommonModule } from '@angular/common';
+import { OntarioAqhiComponent } from '../../components/ontarioAqhi/ontarioAqhi.component';
 import { MessageService } from '../../services/message.service';
 
 @Component({
@@ -15,21 +24,37 @@ import { MessageService } from '../../services/message.service';
   styleUrls: ['./details.page.scss'],
   imports: [
     CommonModule,
-    IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonBackButton,
-    IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote,
-    OntarioAqhiComponent
-  ]
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonButtons,
+    IonBackButton,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton,
+    OntarioAqhiComponent,
+  ],
 })
 export class DetailsPage implements OnInit {
-  rec: any;
+  rec: { city: string; temperatureC: number; aqhi: number } | null = null;
 
   constructor(private router: Router, private msg: MessageService) {}
 
   ngOnInit() {
-    this.rec = history.state?.record ?? null; // 7b
+    this.rec = history.state?.record ?? null;
   }
 
   sendMessage() {
-    this.msg.setMessage('Hello from Details!'); // 7c
+  
+    const stamp = new Date().toLocaleTimeString();
+    this.msg.setMessage(
+      `Hello from Details for ${this.rec?.city ?? 'Ontario'} @ ${stamp}`
+    );
+
+    
+    this.router.navigate(['/ontario']);
   }
 }

@@ -1,37 +1,90 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* Force app into light mode */
+:root {
+  color-scheme: light;
+}
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+/* General font smoothing */
+:root,
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+/* Make sure pages always use white background */
+ion-content {
+  --background: #ffffff; /* white */
+  color: #111827; /* dark grey text */
+  font-size: 16px; /* readable default */
+}
 
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+/* Toolbar (headers at top) */
+ion-toolbar {
+  --background: #f3f4f6; /* light grey background */
+  --color: #111827; /* dark text */
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 1px solid #e5e7eb; /* subtle bottom border */
+}
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Cards (Canada summary, AQHI, details) */
+ion-card {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  margin: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* Lists (Ontario dataset, AQHI entries) */
+ion-list {
+  background: transparent;
+  padding: 4px 8px;
+}
+ion-item {
+  --background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin: 6px 0;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  min-height: 48px;
+}
+ion-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+ion-note {
+  font-size: 14px;
+  color: #374151; /* darker grey for secondary info */
+}
+
+/* Buttons */
+ion-button {
+  --background: #2563eb; /* strong blue */
+  --color: #ffffff;
+  --border-radius: 8px;
+  font-weight: 600;
+  margin: 12px;
+}
+ion-button:hover {
+  --background: #1e40af; /* darker blue on hover */
+}
+
+/* Tabs bar */
+ion-tab-bar {
+  --background: #f9fafb; /* very light grey */
+  border-top: 1px solid #e5e7eb;
+}
+ion-tab-button {
+  color: #374151;
+}
+ion-tab-button.tab-selected {
+  color: #2563eb;
+}

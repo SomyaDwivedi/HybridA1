@@ -1,9 +1,0 @@
-{
-  "source": "Air Quality Ontario (processed locally)",
-  "downloadedAt": "2025-09-25T16:05:00Z",
-  "entries": [
-    { "city": "Toronto",   "aqhi": 3, "category": "Low" },
-    { "city": "Ottawa",    "aqhi": 2, "category": "Low" },
-    { "city": "Hamilton",  "aqhi": 4, "category": "Moderate" }
-  ]
-}

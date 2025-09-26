@@ -1,0 +1,21 @@
+{
+  "dataSource": "Ontario Data Catalogue – Environment (compiled locally)",
+  "fetchedAt": "2025-09-25T16:10:00Z",
+  "records": [
+    { "city": "Toronto", "temperatureC": 12, "aqhi": 3 },
+    { "city": "Ottawa", "temperatureC": 10, "aqhi": 2 },
+    { "city": "Hamilton", "temperatureC": 11, "aqhi": 4 },
+    { "city": "Mississauga", "temperatureC": 12, "aqhi": 3 },
+    { "city": "Brampton", "temperatureC": 12, "aqhi": 3 },
+    { "city": "London", "temperatureC": 9, "aqhi": 2 },
+    { "city": "Kitchener", "temperatureC": 10, "aqhi": 3 },
+    { "city": "Windsor", "temperatureC": 13, "aqhi": 4 },
+    { "city": "Thunder Bay", "temperatureC": 6, "aqhi": 2 },
+    { "city": "Kingston", "temperatureC": 9, "aqhi": 2 },
+    { "city": "Sudbury", "temperatureC": 7, "aqhi": 2 },
+    { "city": "Guelph", "temperatureC": 10, "aqhi": 3 },
+    { "city": "Niagara Falls", "temperatureC": 12, "aqhi": 3 },
+    { "city": "Peterborough", "temperatureC": 9, "aqhi": 2 },
+    { "city": "Oshawa", "temperatureC": 11, "aqhi": 3 }
+  ]
+}

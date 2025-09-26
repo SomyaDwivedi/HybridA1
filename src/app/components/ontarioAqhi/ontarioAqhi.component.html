@@ -4,7 +4,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-note *ngIf="!loading"
-      >Source: {{ source }} • Time: {{ downloadedAt }}</ion-note
+      >Source: {{ sourceLabel }} • Time: {{ timeLabel }}</ion-note
     >
     <ion-list>
       <ion-item *ngFor="let e of entries">

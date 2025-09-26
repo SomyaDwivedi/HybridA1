@@ -1,0 +1,16 @@
+{
+  "dataSource": "Air Quality Ontario",
+  "fetchedAt": "2025-09-25T16:05:00Z",
+  "entries": [
+    { "city": "Toronto", "aqhi": 3, "category": "Low" },
+    { "city": "Ottawa", "aqhi": 2, "category": "Low" },
+    { "city": "Hamilton", "aqhi": 4, "category": "Moderate" },
+    { "city": "Mississauga", "aqhi": 3, "category": "Low" },
+    { "city": "Brampton", "aqhi": 3, "category": "Low" },
+    { "city": "London", "aqhi": 2, "category": "Low" },
+    { "city": "Kitchener", "aqhi": 3, "category": "Low" },
+    { "city": "Windsor", "aqhi": 4, "category": "Moderate" },
+    { "city": "Thunder Bay", "aqhi": 2, "category": "Low" },
+    { "city": "Kingston", "aqhi": 2, "category": "Low" }
+  ]
+}

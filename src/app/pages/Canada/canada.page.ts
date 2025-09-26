@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ⬅ add this
+import { CommonModule } from '@angular/common';
 import {
   IonHeader,
   IonToolbar,
@@ -11,15 +11,15 @@ import {
   IonCardContent,
   IonNote,
 } from '@ionic/angular/standalone';
-import { WeatherService } from '../../services/weather.service';
+import { WeatherService, CanadaSummary } from '../../services/weather.service';
 
 @Component({
-  selector: 'app-canada-summary',
+  selector: 'app-canada',
   standalone: true,
-  templateUrl: './canada-summary.page.html',
-  styleUrls: ['./canada-summary.page.scss'],
+  templateUrl: './canada.page.html',
+  styleUrls: ['./canada.page.scss'],
   imports: [
-    CommonModule, // ⬅ add this
+    CommonModule,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -31,15 +31,9 @@ import { WeatherService } from '../../services/weather.service';
     IonNote,
   ],
 })
-export class CanadaSummaryPage implements OnInit {
+export class CanadaPage implements OnInit {
   loading = true;
-  data?: {
-    source: string;
-    downloadedAt: string;
-    avgTempC: number;
-    avgHumidityPct: number;
-    conditions: string;
-  };
+  data?: CanadaSummary;
 
   constructor(private weather: WeatherService) {}
 
@@ -47,5 +41,12 @@ export class CanadaSummaryPage implements OnInit {
     const res = await this.weather.getNationalSummary();
     this.data = res.data;
     this.loading = false;
+  }
+
+  srcLabel(d: CanadaSummary) {
+    return d.dataSource ?? d.source ?? '';
+  }
+  tsLabel(d: CanadaSummary) {
+    return d.fetchedAt ?? d.downloadedAt ?? '';
   }
 }

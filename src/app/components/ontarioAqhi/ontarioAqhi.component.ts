@@ -10,18 +10,13 @@ import {
   IonLabel,
   IonNote,
 } from '@ionic/angular/standalone';
-import { AqhiService } from '../../services/aqhi.service';
-
-// ⬇️ Inline the interface here (do NOT import from models)
-interface OntarioAqhiEntry {
-  city: string;
-  aqhi: number;
-  category: 'Low' | 'Moderate' | 'High' | 'Very High';
-}
+import { AqhiService, OntarioAqhiEntry } from '../../services/aqhi.service';
 
 @Component({
   selector: 'app-ontario-aqhi',
   standalone: true,
+  templateUrl: './ontarioAqhi.component.html',
+  styleUrls: ['./ontarioAqhi.component.scss'],
   imports: [
     CommonModule,
     IonCard,
@@ -33,22 +28,20 @@ interface OntarioAqhiEntry {
     IonLabel,
     IonNote,
   ],
-  templateUrl: './ontario-aqhi.component.html',
-  styleUrls: ['./ontario-aqhi.component.scss'],
 })
 export class OntarioAqhiComponent implements OnInit {
   loading = true;
-  source = '';
-  downloadedAt = '';
+  sourceLabel = '';
+  timeLabel = '';
   entries: OntarioAqhiEntry[] = [];
 
   constructor(private aqhi: AqhiService) {}
 
   async ngOnInit() {
-    const data = await this.aqhi.getOntarioAqhi();
-    this.source = data.source;
-    this.downloadedAt = data.downloadedAt;
-    this.entries = data.entries;
+    const d = await this.aqhi.getOntarioAqhi();
+    this.sourceLabel = (d.dataSource ?? d.source) || '';
+    this.timeLabel = (d.fetchedAt ?? d.downloadedAt) || '';
+    this.entries = d.entries;
     this.loading = false;
   }
 }
