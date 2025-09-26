@@ -3,14 +3,14 @@ ion-note {
   display: block;
   margin: 8px 0;
   font-size: 14px;
-  color: #111827;
+  color: var(--ion-text-color);
 }
 ion-item {
   --min-height: 44px;
 }
 ion-label {
   font-weight: 600;
-  color: #111827;
+  color: var(--ion-text-color);
 }
 ion-note[slot="end"] {
   font-weight: 500;
