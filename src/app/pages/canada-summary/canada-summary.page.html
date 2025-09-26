@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Canada Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- use "as d" to avoid possibly-undefined errors -->
+  <ion-card *ngIf="!loading && data as d">
+    <ion-card-header
+      ><ion-card-title
+        >National Weather Summary</ion-card-title
+      ></ion-card-header
+    >
+    <ion-card-content>
+      <p>Avg Temp: {{ d.avgTempC }} °C</p>
+      <p>Avg Humidity: {{ d.avgHumidityPct }}%</p>
+      <p>Conditions: {{ d.conditions }}</p>
+      <ion-note>Source: {{ d.source }} • Time: {{ d.downloadedAt }}</ion-note>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

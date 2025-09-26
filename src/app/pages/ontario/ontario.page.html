@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ontario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 3) Ontario AQHI component -->
+  <app-ontario-aqhi></app-ontario-aqhi>
+
+  <!-- 4) Message sent from Details -->
+  <ion-note *ngIf="incomingMessage"
+    >Message from Details: {{incomingMessage}}</ion-note
+  >
+
+  <!-- 5–6) Dataset list & select to Details -->
+  <ion-note>Dataset: {{datasetNote}} • Time: {{datasetTime}}</ion-note>
+  <ion-list>
+    <ion-item *ngFor="let r of records" (click)="openDetails(r)">
+      <ion-label>{{r.city}}</ion-label>
+      <ion-note slot="end">{{r.temperatureC}}°C • AQHI {{r.aqhi}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

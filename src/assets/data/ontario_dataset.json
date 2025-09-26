@@ -1,0 +1,9 @@
+{
+  "source": "Ontario Data Catalogue – Environment (processed locally)",
+  "downloadedAt": "2025-09-25T16:10:00Z",
+  "records": [
+    { "city": "Toronto",  "temperatureC": 12, "aqhi": 3 },
+    { "city": "Ottawa",   "temperatureC": 10, "aqhi": 2 },
+    { "city": "Hamilton", "temperatureC": 11, "aqhi": 4 }
+  ]
+}
