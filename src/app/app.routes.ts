@@ -8,7 +8,7 @@ export const routes: Routes = [
       {
         path: 'canada',
         loadComponent: () =>
-          import('./pages/Canada/canada.page').then((m) => m.CanadaPage),
+          import('./pages/canada/canada.page').then((m) => m.CanadaPage),
       },
       {
         path: 'ontario',

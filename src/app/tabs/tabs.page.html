@@ -1,10 +1,13 @@
 <ion-tabs>
+  <ion-router-outlet></ion-router-outlet>
+
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="canada" [routerLink]="['/canada']">
+    <ion-tab-button tab="canada" [routerLink]="['/tabs/canada']">
       <ion-icon name="globe-outline"></ion-icon>
       <ion-label>Canada</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="ontario" [routerLink]="['/ontario']">
+
+    <ion-tab-button tab="ontario" [routerLink]="['/tabs/ontario']">
       <ion-icon name="map-outline"></ion-icon>
       <ion-label>Ontario</ion-label>
     </ion-tab-button>

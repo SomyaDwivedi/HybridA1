@@ -6,12 +6,21 @@ import {
   IonTabButton,
   IonIcon,
   IonLabel,
+  IonRouterOutlet, // ⬅ add this
 } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   standalone: true,
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, RouterLink],
+  imports: [
+    IonTabs,
+    IonRouterOutlet, // ⬅ add this
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel,
+    RouterLink,
+  ],
 })
 export class TabsPage {}
