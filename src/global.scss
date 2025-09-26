@@ -1,37 +1,252 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
+/* ──────────────────────────────────────────────
+   Ionic base imports (keep these at the top)
+   ────────────────────────────────────────────── */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* ──────────────────────────────────────────────
+   Design tokens
+   ────────────────────────────────────────────── */
+:root {
+  --radius-lg: 16px;
+  --radius-md: 12px;
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+  --ring: 1px solid var(--ion-color-step-150);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 22px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.1);
+
+  /* Tab colors */
+  --tab-active: var(--ion-color-primary);
+  --tab-muted: var(--ion-color-medium);
+}
+
+/* Dark-mode subtle tweaks */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 6px 22px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Global layout & typography
+   ────────────────────────────────────────────── */
+html,
+body,
+ion-app {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent padding across pages */
+ion-content {
+  --padding-top: 12px;
+  --padding-end: 12px;
+  --padding-bottom: calc(20px + var(--ion-safe-area-bottom));
+  --padding-start: 12px;
+}
+
+/* Readable paragraphs inside cards/sections */
+ion-card-content p,
+.content p {
+  margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Muted helper text */
+ion-note,
+.muted {
+  color: var(--ion-color-medium);
+  font-size: 13px;
+}
+
+/* ──────────────────────────────────────────────
+   Cards
+   ────────────────────────────────────────────── */
+ion-card {
+  margin: 12px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+ion-card-title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Utility card class for non-Ionic blocks */
+.app-card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: var(--ion-color-step-50);
+  padding: 12px;
+}
+
+/* ──────────────────────────────────────────────
+   Lists & items
+   ────────────────────────────────────────────── */
+ion-list {
+  margin: 8px 8px 16px;
+  border: var(--ring);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--ion-background-color, transparent);
+}
+
+ion-item {
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  --min-height: 48px;
+}
+
+ion-item:hover {
+  background: color-mix(in oklab, var(--ion-color-primary) 10%, transparent);
+  cursor: pointer;
+}
+
+ion-label {
+  font-weight: 600;
+}
+
+/* Simple row layout helpers (for key/value lines) */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed var(--ion-color-step-200);
+  padding: 6px 0;
+}
+.row:last-child {
+  border-bottom: none;
+}
+.label {
+  color: var(--ion-color-medium);
+}
+.val {
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────
+   Tabs (bottom bar)
+   ────────────────────────────────────────────── */
+ion-tab-bar {
+  border-top: 1px solid var(--ion-color-step-150);
+  padding-inline: 4px;
+  backdrop-filter: saturate(1.2) blur(6px);
+  z-index: 5; /* stays above scrolling content */
+  position: relative; /* avoid accidental overlay issues */
+}
+
+ion-tab-button {
+  --color: var(--tab-muted);
+  --color-selected: var(--tab-active);
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --ripple-color: var(--ion-color-primary);
+
+  ion-icon {
+    font-size: 20px;
+  }
+  ion-label {
+    font-weight: 700;
+  }
+}
+
+ion-tab-button.tab-selected {
+  background: color-mix(in oklab, var(--ion-color-primary) 12%, transparent);
+  border-radius: 12px;
+}
+
+/* ──────────────────────────────────────────────
+   Buttons (generic pill)
+   ────────────────────────────────────────────── */
+.pill-btn,
+button.pill-btn,
+ion-button.pill-btn {
+  --background: color-mix(in oklab, var(--ion-color-primary) 15%, transparent);
+  --color: var(--ion-color-primary-contrast);
+  --border-radius: 999px;
+  --border-color: var(--ion-color-primary);
+  --border-style: solid;
+  --border-width: 1px;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+/* ──────────────────────────────────────────────
+   Badges (e.g., AQHI)
+   ────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.badge.low {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+.badge.moderate {
+  background: #fff8e1;
+  color: #bf360c;
+}
+.badge.high {
+  background: #ffebee;
+  color: #b71c1c;
+}
+
+/* ──────────────────────────────────────────────
+   Utilities
+   ────────────────────────────────────────────── */
+.stack {
+  display: grid;
+  gap: 10px;
+}
+.grid-2 {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-3 {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.divider {
+  height: 1px;
+  background: var(--ion-color-step-200);
+  margin: 8px 0;
+}
+
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+}

@@ -1,0 +1,11 @@
+{
+  "source": "Ontario Data API",
+  "downloadedAt": "2025-09-21T07:15:00AM",
+  "records": [
+    { "city": "Toronto", "temperatureC": 12, "aqhi": 3 },
+    { "city": "Ottawa", "temperatureC": 10, "aqhi": 2 },
+    { "city": "Hamilton", "temperatureC": 11, "aqhi": 4 },
+    { "city": "Sudbury", "temperatureC": 7, "aqhi": 2 },
+    { "city": "Guelph", "temperatureC": 10, "aqhi": 3 }
+  ]
+}

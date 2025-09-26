@@ -1,0 +1,11 @@
+{
+  "dataSource": "Air Quality Ontario API",
+  "fetchedAt": "2025-09-21T06:05:00AM",
+  "entries": [
+    { "city": "Toronto", "aqhi": 3, "category": "Low" },
+    { "city": "Ottawa", "aqhi": 2, "category": "Low" },
+    { "city": "Hamilton", "aqhi": 4, "category": "Moderate" },
+    { "city": "Sudbury", "aqhi": 2, "category": "Low" },
+    { "city": "Guelph", "aqhi": 3, "category": "Low" }
+  ]
+}

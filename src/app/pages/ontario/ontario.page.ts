@@ -10,17 +10,13 @@ import {
   IonItem,
   IonLabel,
   IonNote,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
 } from '@ionic/angular/standalone';
-import { AqhiService } from '../../services/aqhi.service';
-import { OntarioAqhiComponent } from '../../components/ontario-aqhi/ontario-aqhi.component';
+import { AqhiService, OntarioDatasetRecord } from '../../services/aqhi.service';
 import { MessageService } from '../../services/message.service';
-
-// ⬇️ Inline the interface here (remove any models import)
-interface OntarioDatasetRecord {
-  city: string;
-  temperatureC: number;
-  aqhi: number;
-}
 
 @Component({
   selector: 'app-ontario',
@@ -37,13 +33,16 @@ interface OntarioDatasetRecord {
     IonItem,
     IonLabel,
     IonNote,
-    OntarioAqhiComponent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
   ],
 })
 export class OntarioPage implements OnInit {
+  records: OntarioDatasetRecord[] = [];
   datasetNote = '';
   datasetTime = '';
-  records: OntarioDatasetRecord[] = [];
   incomingMessage = '';
 
   constructor(
@@ -54,10 +53,20 @@ export class OntarioPage implements OnInit {
 
   async ngOnInit() {
     const ds = await this.aqhi.getOntarioDataset();
+    // use the exact keys defined by the service type
     this.datasetNote = ds.source;
     this.datasetTime = ds.downloadedAt;
     this.records = ds.records;
-    this.incomingMessage = this.msg.getMessage();
+
+    // optional: show any message already set
+    const peek = this.msg.getMessage();
+    if (peek) this.incomingMessage = peek;
+  }
+
+  // fires whenever this tab becomes active
+  ionViewWillEnter() {
+    const m = this.msg.takeMessage();
+    if (m) this.incomingMessage = m;
   }
 
   openDetails(rec: OntarioDatasetRecord) {

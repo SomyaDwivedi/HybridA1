@@ -20,7 +20,7 @@ export class AqhiService {
     downloadedAt: string;
     entries: OntarioAqhiEntry[];
   }> {
-    const res = await fetch('assets/data/ontario_aqhi.json');
+    const res = await fetch('assets/data/ontarioAqhi.json');
     return res.json();
   }
 
@@ -29,7 +29,7 @@ export class AqhiService {
     downloadedAt: string;
     records: OntarioDatasetRecord[];
   }> {
-    const res = await fetch('assets/data/ontario_dataset.json');
+    const res = await fetch('assets/data/ontarioDataset.json');
     return res.json();
   }
 }

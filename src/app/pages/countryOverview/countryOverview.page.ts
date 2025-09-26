@@ -14,10 +14,10 @@ import {
 import { WeatherService } from '../../services/weather.service';
 
 @Component({
-  selector: 'app-canada-summary',
+  selector: 'app-countryOverview',
   standalone: true,
-  templateUrl: './canada-summary.page.html',
-  styleUrls: ['./canada-summary.page.scss'],
+  templateUrl: './countryOverview.page.html',
+  styleUrls: ['./countryOverview.page.scss'],
   imports: [
     CommonModule, // ⬅ add this
     IonHeader,

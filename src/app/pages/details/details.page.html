@@ -2,28 +2,24 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/ontario"></ion-back-button>
-      <!-- 7d -->
     </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- 7a: include Ontario AQHI component -->
   <app-ontario-aqhi></app-ontario-aqhi>
 
-  <!-- 7b: show detail data from Ontario selection -->
   <ion-card *ngIf="rec">
-    <ion-card-header
-      ><ion-card-title>{{rec.city}}</ion-card-title></ion-card-header
-    >
+    <ion-card-header>
+      <ion-card-title>{{ rec.city }}</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <p>Temperature: {{rec.temperatureC}} °C</p>
-      <p>AQHI: {{rec.aqhi}}</p>
+      <p>Temperature: {{ rec.temperatureC }} °C</p>
+      <p>AQHI: {{ rec.aqhi }}</p>
     </ion-card-content>
   </ion-card>
 
-  <!-- 7c: send a message back to Ontario via service -->
-  <ion-note>Tap to send a message to Ontario tab.</ion-note>
-  <button class="ion-activatable" (click)="sendMessage()">Send Message</button>
+  <ion-note style="margin: 10px 12px;">Tap to send a message to Ontario tab.</ion-note>
+  <button class="pill-btn" (click)="sendMessage()">Send Message</button>
 </ion-content>
